@@ -34,7 +34,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, imageUrl, githubUrl }) => (
   <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 flex flex-col gap-3">
     <div className="flex items-center justify-between">
-      <h3 className="font-bold text-lg text-gray-200">{title}</h3>
+      <h3 className="font-bold text-sm text-gray-200">{title}</h3>
       <a href={githubUrl} target="_blank" rel="noopener noreferrer">
         <GitHubIcon />
       </a>
