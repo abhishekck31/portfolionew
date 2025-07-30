@@ -1,5 +1,4 @@
-// Step 1: Create a new file at src/components/ProjectsShowcase.tsx
-// and paste the code below into it.
+// In src/components/ProjectsShowcase.tsx
 
 import React from 'react';
 
@@ -23,7 +22,7 @@ const GitHubIcon = () => (
 );
 
 // --- Project Card Component ---
-// This component represents a single project in the showcase.
+// This component has been updated to match the new design.
 interface ProjectCardProps {
   title: string;
   description: string;
@@ -32,19 +31,24 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, imageUrl, githubUrl }) => (
-  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 flex flex-col gap-3">
-    <div className="flex items-center justify-between">
-      <h3 className="font-bold text-sm text-gray-200">{title}</h3>
-      <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-        <GitHubIcon />
-      </a>
+  // The card itself is now just a flex container with no background or border.
+  <div className="flex flex-col gap-3">
+    {/* This div holds the text content and the divider line */}
+    <div className="flex flex-col gap-2 border-b border-gray-700 pb-3">
+      <div className="flex items-center justify-between">
+        <h3 className="font-bold text-lg text-gray-200">{title}</h3>
+        <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+          <GitHubIcon />
+        </a>
+      </div>
+      <p className="text-gray-400 text-sm">{description}</p>
     </div>
-    <p className="text-gray-400 text-sm">{description}</p>
+    {/* The image is now outside the text content div */}
     <div className="mt-auto">
       <img 
         src={imageUrl} 
         alt={`${title} project preview`} 
-        className="rounded-md w-full aspect-video object-cover border border-gray-600"
+        className="rounded-lg w-full aspect-video object-cover border border-gray-600"
       />
     </div>
   </div>
@@ -52,9 +56,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, imageUrl,
 
 
 // --- Main Projects Showcase Component ---
-// This component holds the grid of all your projects.
 const ProjectsShowcase = () => {
-  // You can replace this with your actual project data.
   const projects = [
     {
       title: 'Bob',
@@ -83,8 +85,9 @@ const ProjectsShowcase = () => {
   ];
 
   return (
+    // The main container provides the background for the whole section.
     <div className="bg-gray-900/70 backdrop-blur-sm border border-gray-700 p-4 sm:p-6 rounded-2xl shadow-lg w-full max-w-7xl mx-auto font-sans">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"> {/* Increased gap for more space */}
         {projects.map((project, index) => (
           <ProjectCard key={index} {...project} />
         ))}
